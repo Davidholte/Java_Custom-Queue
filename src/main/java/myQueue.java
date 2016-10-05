@@ -1,13 +1,15 @@
+package main.java;
+
 import java.util.LinkedList;
 
 /**
  * Created by 3299779 on 27/09/2016.
  */
 //Her har jeg brugt en LinkedList til at lave en implementation af en Queue:
-public abstract class myQueue<E> implements myQueueInterface<E> {
+public class myQueue<E> implements main.java.myQueueInterface<E> {
 
     private LinkedList<E> list = new LinkedList<E>();
-    private Object front = list.getFirst();
+    //private Object front = list.getFirst();
 
     public myQueue() {
     }
@@ -17,11 +19,11 @@ public abstract class myQueue<E> implements myQueueInterface<E> {
         list.addLast(e);
     }
 
-    public Object myRemove() {
-        if (front == null) {
+    public E myRemove() {
+        if (list.getFirst() == null) {
             throw new EmptyQueueException("Queue is empty yoyoyoyo");
         }
-        return list.pollFirst();
+        return list.removeFirst();
     }
 
     public boolean myIsEmpty() {
@@ -29,8 +31,8 @@ public abstract class myQueue<E> implements myQueueInterface<E> {
         return list.isEmpty();
     }
 
-    public Object myPeek() {
-        return front;
+    public E myPeek() {
+        return list.getFirst();
     }
 
     public int mySize() {
